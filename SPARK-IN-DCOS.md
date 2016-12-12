@@ -54,7 +54,7 @@ volumes into dockerized executors, and update "scratch" space location
 | spark.shuffle.service.enabled         | true  |
 | spark.dynamicAllocation.enabled       | true  |
 | spark.dynamicAllocation.maxExecutors  | 10    |
-| spark.local.dir	                    | /var/data/spark                    |
+| spark.local.dir	                    | /tmp/spark                   |
 | spark.mesos.executor.docker.volumes	| /var/lib/tmp/spark:/tmp/spark:rw   |
 
 ## Enabling Dynamic Allocation in Apache Zeppelin
