@@ -1,0 +1,36 @@
+{
+  "id": "mesos-shuffle-service",
+  "instances": 1,
+  "mem": 1024,
+  "cpus": 0.05,
+  "portDefinitions": [
+    { "port": 7337, "protocol": "tcp", "name": "shuffle-service" }
+  ],
+  "cmd": "/opt/spark/dist/sbin/start-mesos-shuffle-service.sh --conf spark.shuffle.service.enabled=true --conf spark.network.timeout=10s --conf spark.shuffle.io.connectionTimeout=10s && cd /opt/spark/dist/logs/ && find . -name 'spark--org.apache.spark.deploy.mesos.MesosExternalShuffleService-*.out' -exec tail -f {} \\;",
+  "env": {
+    "SPARK_DAEMON_MEMORY": "1g"
+  },
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "labels": {
+    "SPARK_VERSION": "2.0.0"
+  },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "mesosphere/spark:1.0.2-2.0.0",
+      "network": "HOST"
+    },
+    "volumes": [
+      {
+        "containerPath": "/tmp/spark",
+        "hostPath": "/var/lib/tmp/spark",
+        "mode": "RW"
+      }
+    ]
+  }
+}
