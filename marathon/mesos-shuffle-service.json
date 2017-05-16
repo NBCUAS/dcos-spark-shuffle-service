@@ -32,7 +32,7 @@
         "mode": "RW"
       }
     ]
-  }
+  },
   "healthChecks": [
     {
       "protocol": "TCP",
