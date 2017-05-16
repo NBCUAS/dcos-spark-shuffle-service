@@ -6,7 +6,7 @@
   "portDefinitions": [
     { "port": 7337, "protocol": "tcp", "name": "shuffle-service" }
   ],
-  "cmd": "/opt/spark/dist/sbin/start-mesos-shuffle-service.sh --conf spark.shuffle.service.enabled=true --conf spark.network.timeout=10s --conf spark.shuffle.io.connectionTimeout=10s && cd /opt/spark/dist/logs/ && find . -name 'spark--org.apache.spark.deploy.mesos.MesosExternalShuffleService-*.out' -exec tail -f {} \\;",
+  "cmd": "rm -rf /tmp/spark/spark-* && rm -rf /tmp/spark/blockmgr-* && /opt/spark/dist/sbin/start-mesos-shuffle-service.sh --conf spark.shuffle.service.enabled=true --conf spark.network.timeout=10s --conf spark.shuffle.io.connectionTimeout=10s && cd /opt/spark/dist/logs/ && find . -name 'spark--org.apache.spark.deploy.mesos.MesosExternalShuffleService-*.out' -exec tail -f {} \\;",
   "env": {
     "SPARK_DAEMON_MEMORY": "1g"
   },
@@ -33,4 +33,15 @@
       }
     ]
   }
+  "healthChecks": [
+    {
+      "protocol": "TCP",
+      "gracePeriodSeconds": 10,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 3,
+      "port": 7337,
+      "portType": "PORT_NUMBER"
+    }
+  ]
 }
