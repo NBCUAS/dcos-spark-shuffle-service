@@ -17,12 +17,12 @@
     ]
   ],
   "labels": {
-    "SPARK_VERSION": "2.0.0"
+    "SPARK_VERSION": "2.2.0"
   },
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "mesosphere/spark:1.0.2-2.0.0",
+      "image": "mesosphere/spark:1.1.1-2.2.0-hadoop-2.7",
       "network": "HOST"
     },
     "volumes": [
