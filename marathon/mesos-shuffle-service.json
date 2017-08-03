@@ -1,6 +1,6 @@
 {
   "id": "mesos-shuffle-service",
-  "instances": 1,
+  "instances": 30,
   "mem": 1024,
   "cpus": 0.05,
   "portDefinitions": [
@@ -36,7 +36,7 @@
   "healthChecks": [
     {
       "protocol": "TCP",
-      "gracePeriodSeconds": 10,
+      "gracePeriodSeconds": 5,
       "intervalSeconds": 60,
       "timeoutSeconds": 10,
       "maxConsecutiveFailures": 3,
