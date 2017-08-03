@@ -1,6 +1,6 @@
 {
   "id": "mesos-shuffle-service",
-  "instances": 1,
+  "instances": 30,
   "mem": 1024,
   "cpus": 0.05,
   "portDefinitions": [
@@ -17,12 +17,12 @@
     ]
   ],
   "labels": {
-    "SPARK_VERSION": "2.0.0"
+    "SPARK_VERSION": "2.2.0"
   },
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "mesosphere/spark:1.0.2-2.0.0",
+      "image": "mesosphere/spark:1.1.1-2.2.0-hadoop-2.7",
       "network": "HOST"
     },
     "volumes": [
@@ -36,7 +36,7 @@
   "healthChecks": [
     {
       "protocol": "TCP",
-      "gracePeriodSeconds": 10,
+      "gracePeriodSeconds": 5,
       "intervalSeconds": 60,
       "timeoutSeconds": 10,
       "maxConsecutiveFailures": 3,
