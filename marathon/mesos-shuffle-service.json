@@ -22,7 +22,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "registry.marathon.mesos:5000/spark:2.7.0-2.4.0-hadoop-2.7-scala-2.12",
+      "image": "mesosphere/spark:2.7.0-2.4.0-hadoop-2.7",
       "network": "HOST"
     },
     "volumes": [
